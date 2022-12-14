@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% set page_title = 'Home: '%}
+
+{% block content %}
+    <div style="text-align: center">
+        <br>
+        <h3>Congratulations, {{name}}</h3>
+        <h3>You finished the challenge !</h3>
+        <br>
+        <img src="{{ url_for('static', filename='img/finish.gif') }}" alt="stock-graph" width="500px">
+    </div>
+                     
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+    $(document).ready(function(){
+        console.log('--- js file loaded ---');
+
+        var content =  $.ajax({
+            url: "https://alexicoo.nl/img/stock-graph.jpeg",
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(result){
+                console.log(result);
+            }
+
+
+
+        })
+    })
+    </script>
+    <script src="{{ url_for('static', filename='javascript/home.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% set page_title = 'Home: '%}
+
+{% block content %}
+    <br>
+    <h3>Provide name and group nr.</h3>
+    <br>
+    <form action="{{ url_for('login') }}" method="post">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+        </div>
+        <div class="">
+            Group:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+            <input class="btn-check" type="radio" id="radio-button-1" name="group" value="F2">
+            <label class="btn btn-secondary"  for="radio-button-1">F2</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="btn-check" type="radio" id="radio-button-2" name="group" value="F3">
+            <label class="btn btn-secondary"  for="radio-button-2">F3</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="btn-check"  type="radio" id="radio-button-3" name="group" value="F4">
+            <label class="btn btn-secondary"  for="radio-button-3">F4</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="btn-check"  type="radio" id="radio-button-4" name="group" value="F5">
+            <label class="btn btn-secondary"  for="radio-button-4">F5</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="btn-check"  type="radio" id="radio-button-5" name="group" value="OTHER">
+            <label class="btn btn-secondary"  for="radio-button-5">Other</label>
+
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+    $(document).ready(function(){
+        console.log('--- js file loaded ---');
+
+        var content =  $.ajax({
+            url: "https://alexicoo.nl/img/stock-graph.jpeg",
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(result){
+                console.log(result);
+            }
+
+
+
+        })
+    })
+    </script>
+    <script src="{{ url_for('static', filename='javascript/home.js') }}"></script>
+{% endblock %}

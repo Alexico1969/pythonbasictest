@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% set page_title = 'Home: '%}
+
+{% block content %}
+    <br>
+    <h3>Challenge {{nr}}</h3>
+    <br>
+    <div class="challenge">
+        {{challenge}}
+    </div>
+    <br>
+    <div class="answer">
+        <form action="{{url_for('home')}}" method="post">
+            <input id = "code_field" type="text" name="code" placeholder="Put your code here" width="500px">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+    $(document).ready(function(){
+        console.log('--- js file loaded ---');
+
+        var content =  $.ajax({
+            url: "https://alexicoo.nl/img/stock-graph.jpeg",
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(result){
+                console.log(result);
+            }
+
+
+
+        })
+    })
+    </script>
+    <script src="{{ url_for('static', filename='javascript/home.js') }}"></script>
+{% endblock %}

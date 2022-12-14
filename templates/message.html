@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% set page_title = 'Home: '%}
+
+{% block content %}
+    <br>
+    <h3>{{message}}</h3>
+    <br>
+    <a href="{{goto}}"><button type="submit" value="Submit">OK</button></a>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+    $(document).ready(function(){
+        console.log('--- js file loaded ---');
+
+        var content =  $.ajax({
+            url: "https://alexicoo.nl/img/stock-graph.jpeg",
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(result){
+                console.log(result);
+            }
+
+
+
+        })
+    })
+    </script>
+    <script src="{{ url_for('static', filename='javascript/home.js') }}"></script>
+{% endblock %}
