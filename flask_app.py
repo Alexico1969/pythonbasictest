@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, session
 
+from db import get_user, update_user, get_challenge, get_challenges, get_users, create_tables, add_user, add_challenge
+
 challenges = [
     [1, "Send the following message to the screen: 'Hello, World!'", ["print('Hello, World!')", 'print("Hello, World!")']],
     [2, "Create a variable called 'name' and assign it the value 'Bruce Wayne'", ["name = 'Bruce Wayne'", 'name = "Bruce Wayne"',"name='Bruce Wayne'", 'name="Bruce Wayne"',]],
